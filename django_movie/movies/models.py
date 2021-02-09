@@ -1,6 +1,7 @@
 from django.db import models
 from datetime import date
 
+
 class Category(models.Model):
     """Категории"""
     name = models.CharField("Категория", max_length=150)
@@ -102,7 +103,7 @@ class Rating(models.Model):
     """Рейтинг"""
     ip = models.CharField("IP адресс", max_length=15)
     star = models.ForeignKey(RatingStar, on_delete=models.CASCADE, verbose_name="звезда")
-    movie = models.ForeignKey(Movie, on_delete=models.CharField, verbose_name="фильм")
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE, verbose_name="фильм")
 
     def __str__(self):
         return f"{self.star} - {self.movie}"
